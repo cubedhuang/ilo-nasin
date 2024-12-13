@@ -36,7 +36,7 @@ export const preverbs = [
 	'lukin',
 	'alasa'
 ];
-export const numbers = ['wan', 'tu', 'luka', 'mute', 'ale'];
+export const numbers = ['wan', 'tu', 'luka', 'mute', 'ale', 'ali'];
 export const unmarkedSubjects = ['mi', 'sina'];
 
 export class TokiPonaLexer implements Lexer {
