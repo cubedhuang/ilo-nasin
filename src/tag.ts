@@ -24,7 +24,7 @@ type SContext = (typeof sContexts)[number];
 const nContexts = ["head", "modifier"] as const;
 type NContext = (typeof nContexts)[number];
 
-export function tagWords(
+export function tagTree(
 	tree: Tree,
 	sContext: SContext = "interjection",
 	nContext: NContext = "modifier",
@@ -47,15 +47,13 @@ export function tagWords(
 	switch (tree.type) {
 		case "branch":
 			return [
-				...tagWords(tree.left, sContext, nContext),
-				...tagWords(tree.right, sContext, nContext),
+				...tagTree(tree.left, sContext, nContext),
+				...tagTree(tree.right, sContext, nContext),
 			];
 		case "labelled":
-			return tagWords(tree.tree, sContext, nContext);
+			return tagTree(tree.tree, sContext, nContext);
 		case "rose":
-			return tree.children.flatMap((t) =>
-				tagWords(t, sContext, nContext),
-			);
+			return tree.children.flatMap((t) => tagTree(t, sContext, nContext));
 		case "leaf":
 			return [
 				{

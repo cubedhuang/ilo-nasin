@@ -1,6 +1,6 @@
 {
 	"name": "ilo-nasin",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A parser and part-of-speech tagger for Toki Pona.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
