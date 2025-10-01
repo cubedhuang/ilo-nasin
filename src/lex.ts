@@ -18,16 +18,7 @@ export type Token = {
 	index: number;
 };
 
-export const particles = [
-	"li",
-	"e",
-	"pi",
-	"la",
-	"en",
-	"o",
-	"anu",
-	"a",
-] as const;
+export const particles = ["li", "e", "pi", "la", "en", "o", "anu", "a"];
 export const prepositions = ["tan", "lon", "sama", "tawa", "kepeken"];
 export const preverbs = [
 	"awen",
