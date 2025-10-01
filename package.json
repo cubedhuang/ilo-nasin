@@ -1,0 +1,36 @@
+{
+	"name": "ilo-nasin",
+	"version": "1.0.0",
+	"description": "A parser and part-of-speech tagger for Toki Pona.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "pnpm codegen && tsc",
+		"format": "prettier --write .",
+		"codegen:prepare": "tsc -p scripts/tsconfig.json",
+		"codegen:preprocess": "pnpm exec esr scripts/grammar-preprocessor.js src/grammar.ne src/grammar-processed.ne",
+		"codegen:compile": "pnpm exec nearleyc src/grammar-processed.ne -o src/grammar.ts",
+		"codegen:postprocess": "pnpm exec esr scripts/grammar-postprocessor.js src/grammar.ts src/grammar.ts",
+		"codegen": "pnpm codegen:prepare && pnpm codegen:preprocess && pnpm codegen:compile && pnpm codegen:postprocess"
+	},
+	"keywords": [
+		"toki pona",
+		"parser",
+		"context-free grammar",
+		"part-of-speech tagging"
+	],
+	"author": "cubedhuang <99danielh@gmail.com> (https://dan.onl)",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/nearley": "^2.11.5",
+		"@types/node": "^24.6.1",
+		"esbuild-runner": "^2.2.2",
+		"prettier": "^3.6.2",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"nearley": "^2.20.1"
+	}
+}
